@@ -1,18 +1,21 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://calc-dev.v04.dev/auth');
+test('open auth page', async ({ page }) => {
+  const url = 'https://calc-dev.v04.dev/auth';
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveURL(/auth/);
+  await page.goto(url);
+  await expect(page).toHaveURL(url);
+  await expect(page.getByTestId('login-page-content')).toBeVisible();
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://calc-dev.v04.dev/auth');
+test('login form negative case', async ({ page }) => {
+  const url = 'https://calc-dev.v04.dev/auth';
+  const email = 'test@mail.com';
+  const password = '123456';
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  await page.goto(url);
+  await page.getByTestId('login-email-input').fill(email); 
+  await page.getByTestId('login-password-input').fill(password);
+  await page.getByTestId('login-submit-button').click();
+  await expect(page.getByTestId('login-form').locator('span').first()).toHaveText('Invalid email or password');
 });
