@@ -23,7 +23,7 @@ test('wrong credentials', async ({ page }) => {
 
 });
 
-test('valudation', async ({ page }) => {
+test('validation', async ({ page }) => {
 
   await page.goto(url);
   await page.getByTestId(loginEmailInput).fill(''); 
