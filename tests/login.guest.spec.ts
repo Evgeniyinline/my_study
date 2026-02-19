@@ -16,14 +16,14 @@ test('open auth page', async ({ page }) => {
 test('wrong credentials', async ({ page }) => {
 
   await page.goto(url);
-  await page.getByTestId(loginEmailInput).fill(process.env.WRONG_EMAIL!); 
-  await page.getByTestId(loginPasswordInput).fill(process.env.WRONG_PASSWORD!);
+  await page.getByTestId(loginEmailInput).fill(process.env.E2E_WRONG_EMAIL!); 
+  await page.getByTestId(loginPasswordInput).fill(process.env.E2E_WRONG_PASSWORD!);
   await page.getByTestId(loginSubmitButton).click();
   await expect(page.getByTestId('login-form').locator('span').first()).toHaveText(/Invalid email or password|Неверный email/);
 
 });
 
-test('valudation', async ({ page }) => {
+test('validation', async ({ page }) => {
 
   await page.goto(url);
   await page.getByTestId(loginEmailInput).fill(''); 
