@@ -34,3 +34,16 @@ test('validation', async ({ page }) => {
   await expect(page.getByTestId(loginForm).locator('span').first()).toHaveText('Неверный email');
 
 });
+
+test('log out', async ({ page }) => {
+  
+  await page.goto(url);
+  await page.getByTestId(loginEmailInput).fill(process.env.E2E_EMAIL!);
+  await page.getByTestId(loginPasswordInput).fill(process.env.E2E_PASSWORD!);
+  await page.getByTestId(loginSubmitButton).click();
+  await page.getByTestId('header-profile-toggle').click();
+  await page.getByTestId('header-profile-signout').click();
+  await expect(page.getByTestId('login-page-content')).toBeVisible();
+  await expect(page).toHaveURL(url);
+
+})

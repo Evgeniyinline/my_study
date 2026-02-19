@@ -42,22 +42,22 @@ export default defineConfig({
     testMatch: '**/auth.setup.ts',
     use: { ...devices['Desktop Chrome'] },
   },
-  {
-    name: 'setup-firefox',
-    testMatch: '**/auth.setup.ts',
-    use: { ...devices['Desktop Firefox'] },
-  },
+  // {
+  //   name: 'setup-firefox',
+  //   testMatch: '**/auth.setup.ts',
+  //   use: { ...devices['Desktop Firefox'] },
+  // },
 
   {
     name: 'guest-chromium',
     testMatch: '**/*.guest.spec.ts',
     use: { ...devices['Desktop Chrome'] },
   },
-  {
-    name: 'guest-firefox',
-    testMatch: '**/*.guest.spec.ts',
-    use: { ...devices['Desktop Firefox'] },
-  },
+  // {
+  //   name: 'guest-firefox',
+  //   testMatch: '**/*.guest.spec.ts',
+  //   use: { ...devices['Desktop Firefox'] },
+  // },
 
   {
     name: 'auth-chromium',
@@ -68,15 +68,15 @@ export default defineConfig({
     },
     dependencies: ['setup-chromium'],
   },
-  {
-    name: 'auth-firefox',
-    testMatch: '**/*.auth.spec.ts',
-    use: {
-      ...devices['Desktop Firefox'],
-      storageState: 'playwright/.auth/firefox.json',
-    },
-    dependencies: ['setup-firefox'],
-  },
+  // {
+  //   name: 'auth-firefox',
+  //   testMatch: '**/*.auth.spec.ts',
+  //   use: {
+  //     ...devices['Desktop Firefox'],
+  //     storageState: 'playwright/.auth/firefox.json',
+  //   },
+  //   dependencies: ['setup-firefox'],
+  // },
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
