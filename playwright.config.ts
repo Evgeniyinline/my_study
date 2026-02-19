@@ -1,4 +1,5 @@
-import { defineConfig, devices } from '@playwright/test';
+import 'dotenv/config';
+import { defineConfig, devices, } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -12,7 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './.',
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -33,22 +34,49 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
+  testMatch: /.*\.(auth|guest)\.spec\.ts|auth\.setup\.ts/,
+
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  {
+    name: 'setup-chromium',
+    testMatch: '**/auth.setup.ts',
+    use: { ...devices['Desktop Chrome'] },
+  },
+  {
+    name: 'setup-firefox',
+    testMatch: '**/auth.setup.ts',
+    use: { ...devices['Desktop Firefox'] },
+  },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+  {
+    name: 'guest-chromium',
+    testMatch: '**/*.guest.spec.ts',
+    use: { ...devices['Desktop Chrome'] },
+  },
+  {
+    name: 'guest-firefox',
+    testMatch: '**/*.guest.spec.ts',
+    use: { ...devices['Desktop Firefox'] },
+  },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+  {
+    name: 'auth-chromium',
+    testMatch: '**/*.auth.spec.ts',
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: 'playwright/.auth/chromium.json',
     },
-
+    dependencies: ['setup-chromium'],
+  },
+  {
+    name: 'auth-firefox',
+    testMatch: '**/*.auth.spec.ts',
+    use: {
+      ...devices['Desktop Firefox'],
+      storageState: 'playwright/.auth/firefox.json',
+    },
+    dependencies: ['setup-firefox'],
+  },
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
