@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-
+// non functional test =( 
 test('change calculator to pro or base', async ({ page }) => {
 
 await page.goto('https://calc-dev.v04.dev/orders/pro');
