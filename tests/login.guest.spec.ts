@@ -6,7 +6,7 @@ const loginEmailInput = 'login-email-input';
 const loginPasswordInput = 'login-password-input';
 const loginForm = 'login-form'
 
-// non functional test =( 
+// Открытие страницы / работоспособность  
 test('open auth page', async ({ page }) => {
 
   await page.goto(url);
@@ -15,6 +15,7 @@ test('open auth page', async ({ page }) => {
 
 });
 
+// неверные логин/пароль
 test('wrong credentials', async ({ page }) => {
 
   await page.goto(url);
@@ -25,6 +26,7 @@ test('wrong credentials', async ({ page }) => {
 
 });
 
+// пустое состояние
 test('validation', async ({ page }) => {
 
   await page.goto(url);
@@ -35,6 +37,7 @@ test('validation', async ({ page }) => {
 
 });
 
+// авторизация/выход из лк
 test('log out', async ({ page }) => {
   
   await page.goto(url);

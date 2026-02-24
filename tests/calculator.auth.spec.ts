@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 
 const url = 'https://calc-dev.v04.dev/orders/pro';
 
+// смена типов калькулятора
 test('change calculator to pro or base', async ({ page }) => {
 
   await page.goto(url);
@@ -14,6 +15,7 @@ test('change calculator to pro or base', async ({ page }) => {
 
 });
 
+// тест кликов в калькулятор коммерческого предложения
 test.skip('click calc', async ({ page }) => {
 
   await page.goto(url);
