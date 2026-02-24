@@ -4,7 +4,7 @@ import { test as setup, expect } from '@playwright/test';
 
 setup('authenticate', async ({ page }, testInfo) => {
 
-  await page.goto('https://calc-dev.v04.dev/auth');
+  await page.goto(process.env.URL!);
 
   await page.getByTestId('login-email-input').fill(process.env.E2E_EMAIL!);
   await page.getByTestId('login-password-input').fill(process.env.E2E_PASSWORD!);

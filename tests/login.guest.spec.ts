@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const url = 'https://calc-dev.v04.dev/auth';
+const url = process.env.URL!;
 const loginSubmitButton = 'login-submit-button';
 const loginEmailInput = 'login-email-input';
 const loginPasswordInput = 'login-password-input';
