@@ -26,6 +26,7 @@ test('check all navigation sections', async ({ page }) => {
   await page.getByTestId('app-logo-link').click();
   await expect(page).toHaveURL(url + '/orders/pro');
   await expect(page.getByTestId('pro-calculator-content').locator(locator).first()).toHaveText('Pro');
+  // TODO: дописать проверку раздела пользователя через PO 
 
 });
 
