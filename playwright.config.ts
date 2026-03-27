@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { defineConfig, devices, } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -37,46 +37,46 @@ export default defineConfig({
   testMatch: /.*\.(auth|guest)\.spec\.ts|auth\.setup\.ts/,
 
   projects: [
-  {
-    name: 'setup-chromium',
-    testMatch: '**/auth.setup.ts',
-    use: { ...devices['Desktop Chrome'] },
-  },
-  // {
-  //   name: 'setup-firefox',
-  //   testMatch: '**/auth.setup.ts',
-  //   use: { ...devices['Desktop Firefox'] },
-  // },
-
-  {
-    name: 'guest-chromium',
-    testMatch: '**/*.guest.spec.ts',
-    use: { ...devices['Desktop Chrome'] },
-  },
-  // {
-  //   name: 'guest-firefox',
-  //   testMatch: '**/*.guest.spec.ts',
-  //   use: { ...devices['Desktop Firefox'] },
-  // },
-
-  {
-    name: 'auth-chromium',
-    testMatch: '**/*.auth.spec.ts',
-    use: {
-      ...devices['Desktop Chrome'],
-      storageState: 'playwright/.auth/chromium.json',
+    {
+      name: 'setup-chromium',
+      testMatch: '**/auth.setup.ts',
+      use: { ...devices['Desktop Chrome'] },
     },
-    dependencies: ['setup-chromium'],
-  },
-  // {
-  //   name: 'auth-firefox',
-  //   testMatch: '**/*.auth.spec.ts',
-  //   use: {
-  //     ...devices['Desktop Firefox'],
-  //     storageState: 'playwright/.auth/firefox.json',
-  //   },
-  //   dependencies: ['setup-firefox'],
-  // },
+    // {
+    //   name: 'setup-firefox',
+    //   testMatch: '**/auth.setup.ts',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+
+    {
+      name: 'guest-chromium',
+      testMatch: '**/*.guest.spec.ts',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    // {
+    //   name: 'guest-firefox',
+    //   testMatch: '**/*.guest.spec.ts',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+
+    {
+      name: 'auth-chromium',
+      testMatch: '**/*.auth.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'playwright/.auth/chromium.json',
+      },
+      dependencies: ['setup-chromium'],
+    },
+    // {
+    //   name: 'auth-firefox',
+    //   testMatch: '**/*.auth.spec.ts',
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     storageState: 'playwright/.auth/firefox.json',
+    //   },
+    //   dependencies: ['setup-firefox'],
+    // },
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',

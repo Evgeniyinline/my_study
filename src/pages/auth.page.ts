@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator } from '@playwright/test';
 
 export class AuthPage {
 
@@ -11,7 +11,7 @@ export class AuthPage {
   loginButton: Locator;
   errorMessage: Locator;
 
-  constructor(page: Page) {
+  constructor (page: Page) {
     this.page = page;
 
     this.logo = page.getByTestId('login-page-logo');
@@ -23,7 +23,7 @@ export class AuthPage {
 
   }
   // авторизация статичного пользователя
-  async signInStaticUser() {
+  async signInStaticUser () {
     await this.emailInput.fill(process.env.E2E_EMAIL);
     await this.passwordInput.fill(process.env.E2E_PASSWORD);
     await this.loginButton.click();
@@ -31,7 +31,7 @@ export class AuthPage {
   // TODO: уйти от статичного пользователя
 
   // авторизация с не верными данными
-  async signInWithInvalidData() {
+  async signInWithInvalidData () {
     await this.emailInput.fill(process.env.E2E_WRONG_EMAIL);
     await this.passwordInput.fill(process.env.E2E_WRONG_PASSWORD);
     await this.loginButton.click();
@@ -39,13 +39,13 @@ export class AuthPage {
   }
 
   // получение ошибки авторизации
-   getErrorMessage() {
+  getErrorMessage () {
     return this.errorMessage;
 
   }
 
   // открытие страницы авторизации
-  async openAuthPage() {
+  async openAuthPage () {
     await this.page.goto(process.env.URL);
 
   }

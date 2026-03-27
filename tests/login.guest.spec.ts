@@ -7,7 +7,7 @@ const loginPasswordInput = 'login-password-input';
 const loginForm = 'login-form';
 const error = 'Неверный email';
 
-// Открытие страницы / работоспособность  
+// Открытие страницы / работоспособность
 test('open auth page', async ({ page }) => {
 
   await page.goto(url);
@@ -18,9 +18,9 @@ test('open auth page', async ({ page }) => {
 
 // неверные логин/пароль
 test('wrong credentials', async ({ page }) => {
-// TODO: подключить фейкер 
+// TODO: подключить фейкер
   await page.goto(url);
-  await page.getByTestId(loginEmailInput).fill(process.env.E2E_WRONG_EMAIL!); 
+  await page.getByTestId(loginEmailInput).fill(process.env.E2E_WRONG_EMAIL!);
   await page.getByTestId(loginPasswordInput).fill(process.env.E2E_WRONG_PASSWORD!);
   await page.getByTestId(loginSubmitButton).click();
   await expect(page.getByTestId(loginForm).locator('span').first()).toHaveText(error);
@@ -31,7 +31,7 @@ test('wrong credentials', async ({ page }) => {
 test('validation', async ({ page }) => {
 
   await page.goto(url);
-  await page.getByTestId(loginEmailInput).fill(''); 
+  await page.getByTestId(loginEmailInput).fill('');
   await page.getByTestId(loginPasswordInput).fill('');
   await page.getByTestId(loginSubmitButton).click();
   await expect(page.getByTestId(loginForm).locator('span').first()).toHaveText(error);
@@ -40,7 +40,7 @@ test('validation', async ({ page }) => {
 
 // авторизация/выход из лк
 test('log out', async ({ page }) => {
-  
+
   await page.goto(url);
   await page.getByTestId(loginEmailInput).fill(process.env.E2E_EMAIL!);
   await page.getByTestId(loginPasswordInput).fill(process.env.E2E_PASSWORD!);
@@ -50,4 +50,4 @@ test('log out', async ({ page }) => {
   await expect(page.getByTestId('login-page-content')).toBeVisible();
   await expect(page).toHaveURL(url);
 
-})
+});

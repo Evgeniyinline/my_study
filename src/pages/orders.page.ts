@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator } from '@playwright/test';
 
 export class OrdersPage {
 
@@ -16,10 +16,7 @@ export class OrdersPage {
   signoutLink: Locator;
   switchConfirmLink: Locator;
 
-
-
-
-  constructor(page: Page) {
+  constructor (page: Page) {
     this.page = page;
 
     this.header = page.locator('Конструктор коммерческого предложения');
@@ -36,6 +33,5 @@ export class OrdersPage {
     // TODO: закончить реализацию
 
   }
-  
 
 }

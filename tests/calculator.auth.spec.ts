@@ -1,11 +1,11 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
 const url = 'https://calc-dev.v04.dev';
 
 // проверка всех разделов навигации
 test('check all navigation sections', async ({ page }) => {
 
-  const locator = 'h1'
+  const locator = 'h1';
 
   await page.goto(url);
   await expect(page.getByTestId('pro-calculator-content')).toBeVisible();
@@ -26,7 +26,7 @@ test('check all navigation sections', async ({ page }) => {
   await page.getByTestId('app-logo-link').click();
   await expect(page).toHaveURL(url + '/orders/pro');
   await expect(page.getByTestId('pro-calculator-content').locator(locator).first()).toHaveText('Pro');
-  // TODO: дописать проверку раздела пользователя через PO 
+  // TODO: дописать проверку раздела пользователя через PO
 
 });
 
@@ -51,5 +51,5 @@ test.skip('click calc', async ({ page }) => {
   await expect(page.getByTestId('pro-calculator-content').locator('span')).toHaveText('SLA: 99.982%');
   await page.getByTestId('pro-calculator-sla-selector-option-3').click();
   await expect(page.getByTestId('pro-calculator-content').locator('span')).toHaveText('SLA: 99.999%');
-  
+
 });
